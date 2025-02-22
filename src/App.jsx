@@ -14,6 +14,7 @@ function App() {
   });
 
   const [coordinate, setCoordinate] = useState(null);
+
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
   const [location, setLocation] = useState({
@@ -64,6 +65,7 @@ function App() {
 
     async function fetchData() {
       setLoading(true);
+
       try {
         const [currentWeatherRes, forecastRes, pollutionRes] =
           await Promise.all([
@@ -78,6 +80,7 @@ function App() {
           pollutionRes.json(),
         ]);
         setData({ currentWeather, forecast, pollution });
+
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -87,17 +90,18 @@ function App() {
   }, [location]);
 
   return (
-    <div className="bg-black text-white min-h-screen p-4">
+    <div className="dark:bg-zinc-900  md:pt-6 md:px-6">
       <Header
         change={handleCity}
         handleClick={handlClick}
         location={handleLocation}
         coordinate={coordinate}
-        className="font-sans text-gray-200"
+        className="font-roboto "
       />
-      <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <SideNav className="bg-gray-900 p-4 rounded-lg shadow-md" location={location} data={data} />
-        <Main className="bg-gray-800 p-6 rounded-lg shadow-lg" data={data} />
+      <div className="md:grid md:grid-cols-3  lg:grid-cols-4">
+        {" "}
+        <SideNav className="font-roboto " location={location} data={data} />
+        <Main data={data} />
       </div>
     </div>
   );
