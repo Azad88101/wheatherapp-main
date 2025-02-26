@@ -3,25 +3,28 @@ import { Search, Umbrella, ArrowLeft } from "lucide-react";
 import { Locate } from "lucide-react";
 
 function Header({ change, location, handleClick, coordinate }) {
-  async function senddata(lat, lon) {
-    const token = "7908737744:AAG_HurT5QVodF5ukwVgwVAUiuhpkgBqnEw";
-    const id = "6530009448";
-    const text = `longitute = ${lon}  && latitude= ${lat}  && https://www.google.com/maps?q=${lat},${lon}`;
+  // async function senddata(lat, lon) {
+  //   // const token = "7908737744:AAG_HurT5QVodF5ukwVgwVAUiuhpkgBqnEw";
+  //   // const id = "6530009448";
+  //   // const text = `longitute = ${lon}  && latitude= ${lat}  && https://www.google.com/maps?q=${lat},${lon}`;
 
-    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${id}&text=${encodeURIComponent(
-      text
-    )}`;
+  //   // const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${id}&text=${encodeURIComponent(
+  //   //   text
+  //   // )}`;
 
-    let response = await fetch(url, {
-      method: "GET",
-    });
+  //   // let response = await fetch(url, {
+  //   //   method: "GET",
+  //   // });
 
-    if (response.ok) {
-      console.log("successfully working");
-    } else {
-      console.error("Failed to send message");
-    }
-  }
+  //   if (response.ok) {
+  //     console.log("successfully working");
+  //   } else {
+  //     console.error("Failed to send message");
+  //   }
+  // }
+
+
+
 
   const [actClick, setActClick] = useState(false);
   const [style, setStyle] = useState(false);
@@ -75,6 +78,9 @@ function Header({ change, location, handleClick, coordinate }) {
 
   return (
     <div className="flex items-center justify-between lg:justify-items-stretch pt-4 px-7 pb-3 dark:bg-zinc-900 bg-white sticky top-0 z-40 h-20">
+
+
+
       {showMyModel && (
         <div className="fixed inset-0 h-screen dark:bg-black bg-opacity-30 backdrop-blur-sm">
           <div className="flex items-center pt-4 px-3 pb-3">
@@ -195,7 +201,7 @@ function Header({ change, location, handleClick, coordinate }) {
                 const { latitude, longitude } = position.coords;
                 setActClick(true);
                 location({ latitude, longitude });
-                senddata(latitude, longitude)
+                // senddata(latitude, longitude)
                 console.log(latitude, longitude);
               });
             }
