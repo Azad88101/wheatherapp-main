@@ -18,8 +18,8 @@ function App() {
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
   const [location, setLocation] = useState({
-    latitude: 51.509865,
-    longitude: -0.118092,
+    latitude: 28.679079,
+    longitude: 77.06971,
   });
 
   const [showMyModel, setShowMyModel] = useState(false);
